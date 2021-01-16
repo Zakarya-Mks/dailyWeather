@@ -1,2 +1,73 @@
 @import 'custom';
 @import '~bootstrap/scss/bootstrap';
+@import 'mixins';
+
+html {
+  max-height: 100%;
+}
+
+.container-fluid:first-child {
+  min-height: 100vh;
+  height: 100% !important;
+}
+
+.mt-lg-n5 {
+  @include addBreakPont('md') {
+    margin-top: -250px !important;
+  }
+}
+
+.bg-dark-1 {
+  background-color: #2c303d;
+}
+
+.bg-dark-2 {
+  background-color: #222531;
+}
+
+.bg-dark-3 {
+  background-color: #262936;
+}
+
+.bg-md-secondary {
+  @include addBreakPont('md') {
+    background-color: #313544 !important;
+  }
+}
+
+.bg-md-dark-2 {
+  @include addBreakPont('md') {
+    background-color: #222531 !important;
+  }
+}
+
+.bg-md-dark-3 {
+  @include addBreakPont('md') {
+    background-color: #262936 !important;
+  }
+}
+
+.bg-md-dark-1 {
+  @include addBreakPont('md') {
+    background-color: #2c303d !important;
+  }
+}
+
+.bg-image {
+  background: url('../img/banner.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 350px;
+}
+
+#condition {
+  color: #bbb;
+}
+
+.card-header {
+  font-size: 1.5rem;
+  @include addBreakPont('md') {
+    font-size: 1rem;
+  }
+}
