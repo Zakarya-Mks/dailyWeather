@@ -10,12 +10,14 @@ export class View {
       .includes('.')
       ? weatherDate.current.temp.toString().split('.')[0] + '°'
       : weatherDate.current.temp + '°';
-    //! testing changing icon
     domElemCollection.todayConditionIcon.src = require('../img/icons/' +
       weatherDate.current.weather[0].icon.substring(0, 2) +
       '.svg');
     domElemCollection.todayCondition.textContent =
       weatherDate.current.weather[0].description;
+    console.log(weatherDate);
+    domElemCollection.todayHumidity.textContent =
+      weatherDate.current.humidity + ' %';
     domElemCollection.todayWindDirection.textContent = helperFunctions.degToCompass(
       weatherDate.current.wind_deg
     );
@@ -44,6 +46,11 @@ export class View {
       ].textContent = day.temp.min.toString().includes('.')
         ? day.temp.min.toString().split('.')[0] + '°'
         : day.temp.min + '°';
+    }
+
+    if (domElemCollection.mainWeatherSection.classList.contains('d-none')) {
+      domElemCollection.mainWeatherSection.classList.remove('d-none');
+      domElemCollection.mainWeatherSection.classList.add('scale-in-center');
     }
   }
 

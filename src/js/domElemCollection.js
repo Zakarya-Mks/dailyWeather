@@ -1,7 +1,7 @@
 export const todayTemp = document.querySelector('#temp');
 export const todayCondition = document.querySelector('#day-0 #condition');
 export const todayConditionIcon = document.querySelector('#day-0 #temp-icon');
-export const todayPrecipitation = document.querySelector('#day-0 #precep');
+export const todayHumidity = document.querySelector('#day-0 #humidity');
 export const todayWindDirection = document.querySelector(
   '#day-0 #windDirection'
 );
@@ -43,3 +43,5 @@ export const day_6_minTemp = document.querySelector('#day-6 #d6-minTemp');
 export const locationForm = document.querySelectorAll('.needs-validation');
 export const findButton = document.querySelectorAll('#findBtn');
 export const locationInput = document.querySelector('#locationInpt');
+
+export const mainWeatherSection = document.querySelector('.mainSection');
