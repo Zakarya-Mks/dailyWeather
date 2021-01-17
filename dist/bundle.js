@@ -106,6 +106,39 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/js/controller.js":
+/*!******************************!*\
+  !*** ./src/js/controller.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _weatherAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./weatherAPI */ \"./src/js/weatherAPI.js\");\n/* harmony import */ var _view_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./view.js */ \"./src/js/view.js\");\n/* harmony import */ var _domElemCollection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./domElemCollection */ \"./src/js/domElemCollection.js\");\n\n\n\n\n// listeners\nconst listenersCallBacks = {\n  onLoadListener: function () {\n    const success = function (location) {\n      _weatherAPI__WEBPACK_IMPORTED_MODULE_0__.Weather.getWeatherData(location.coords).then((weatherData) =>\n        _view_js__WEBPACK_IMPORTED_MODULE_1__.View.displayWeather(weatherData)\n      );\n    };\n\n    const failure = function () {\n      const newYorkCoordinates = { alt: 40.712772, lon: -74.006058 };\n      _weatherAPI__WEBPACK_IMPORTED_MODULE_0__.Weather.getWeatherData(newYorkCoordinates).then((weatherData) =>\n        _view_js__WEBPACK_IMPORTED_MODULE_1__.View.displayWeather(weatherData)\n      );\n    };\n\n    // if user grant location access show curr location forecast\n    // else show new york's forecast\n    navigator.geolocation.getCurrentPosition(success, failure);\n  },\n};\n\n// get current location of the user on load\nwindow.addEventListener('load', listenersCallBacks.onLoadListener);\n\n\n//# sourceURL=webpack://dailyWeather/./src/js/controller.js?");
+
+/***/ }),
+
+/***/ "./src/js/domElemCollection.js":
+/*!*************************************!*\
+  !*** ./src/js/domElemCollection.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"todayTemp\": () => /* binding */ todayTemp,\n/* harmony export */   \"todayCondition\": () => /* binding */ todayCondition,\n/* harmony export */   \"todayConditionIcon\": () => /* binding */ todayConditionIcon,\n/* harmony export */   \"todayPrecipitation\": () => /* binding */ todayPrecipitation,\n/* harmony export */   \"todayWindDirection\": () => /* binding */ todayWindDirection,\n/* harmony export */   \"todayWindSpeed\": () => /* binding */ todayWindSpeed,\n/* harmony export */   \"todayName\": () => /* binding */ todayName,\n/* harmony export */   \"todayDate\": () => /* binding */ todayDate,\n/* harmony export */   \"day_1_date\": () => /* binding */ day_1_date,\n/* harmony export */   \"day_1_icon\": () => /* binding */ day_1_icon,\n/* harmony export */   \"day_1_maxTemp\": () => /* binding */ day_1_maxTemp,\n/* harmony export */   \"day_1_minTemp\": () => /* binding */ day_1_minTemp,\n/* harmony export */   \"day_2_date\": () => /* binding */ day_2_date,\n/* harmony export */   \"day_2_icon\": () => /* binding */ day_2_icon,\n/* harmony export */   \"day_2_maxTemp\": () => /* binding */ day_2_maxTemp,\n/* harmony export */   \"day_2_minTemp\": () => /* binding */ day_2_minTemp,\n/* harmony export */   \"day_3_date\": () => /* binding */ day_3_date,\n/* harmony export */   \"day_3_icon\": () => /* binding */ day_3_icon,\n/* harmony export */   \"day_3_maxTemp\": () => /* binding */ day_3_maxTemp,\n/* harmony export */   \"day_3_minTemp\": () => /* binding */ day_3_minTemp,\n/* harmony export */   \"day_4_date\": () => /* binding */ day_4_date,\n/* harmony export */   \"day_4_icon\": () => /* binding */ day_4_icon,\n/* harmony export */   \"day_4_maxTemp\": () => /* binding */ day_4_maxTemp,\n/* harmony export */   \"day_4_minTemp\": () => /* binding */ day_4_minTemp,\n/* harmony export */   \"day_5_date\": () => /* binding */ day_5_date,\n/* harmony export */   \"day_5_icon\": () => /* binding */ day_5_icon,\n/* harmony export */   \"day_5_maxTemp\": () => /* binding */ day_5_maxTemp,\n/* harmony export */   \"day_5_minTemp\": () => /* binding */ day_5_minTemp,\n/* harmony export */   \"day_6_date\": () => /* binding */ day_6_date,\n/* harmony export */   \"day_6_icon\": () => /* binding */ day_6_icon,\n/* harmony export */   \"day_6_maxTemp\": () => /* binding */ day_6_maxTemp,\n/* harmony export */   \"day_6_minTemp\": () => /* binding */ day_6_minTemp\n/* harmony export */ });\nconst todayTemp = document.querySelector('#temp');\nconst todayCondition = document.querySelector('#day-0 #condition');\nconst todayConditionIcon = document.querySelector('#day-0 #temp-icon');\nconst todayPrecipitation = document.querySelector('#day-0 #precep');\nconst todayWindDirection = document.querySelector(\n  '#day-0 #windDirection'\n);\nconst todayWindSpeed = document.querySelector('#day-0 #windSpeed');\nconst todayName = document.querySelector('#day-0 #day');\nconst todayDate = document.querySelector('#day-0 #date');\n\nconst day_1_date = document.querySelector('#day-1 #d1-day');\nconst day_1_icon = document.querySelector('#day-1 #d1-icon');\nconst day_1_maxTemp = document.querySelector('#day-1 #d1-maxTemp');\nconst day_1_minTemp = document.querySelector('#day-1 #d1-minTemp');\n\nconst day_2_date = document.querySelector('#day-2 #d2-day');\nconst day_2_icon = document.querySelector('#day-2 #d2-icon');\nconst day_2_maxTemp = document.querySelector('#day-2 #d2-maxTemp');\nconst day_2_minTemp = document.querySelector('#day-2 #d2-minTemp');\n\nconst day_3_date = document.querySelector('#day-3 #d3-day');\nconst day_3_icon = document.querySelector('#day-3 #d3-icon');\nconst day_3_maxTemp = document.querySelector('#day-3 #d3-maxTemp');\nconst day_3_minTemp = document.querySelector('#day-3 #d3-minTemp');\n\nconst day_4_date = document.querySelector('#day-4 #d4-day');\nconst day_4_icon = document.querySelector('#day-4 #d4-icon');\nconst day_4_maxTemp = document.querySelector('#day-4 #d4-maxTemp');\nconst day_4_minTemp = document.querySelector('#day-4 #d4-minTemp');\n\nconst day_5_date = document.querySelector('#day-5 #d5-day');\nconst day_5_icon = document.querySelector('#day-5 #d5-icon');\nconst day_5_maxTemp = document.querySelector('#day-5 #d5-maxTemp');\nconst day_5_minTemp = document.querySelector('#day-5 #d5-minTemp');\n\nconst day_6_date = document.querySelector('#day-6 #d6-day');\nconst day_6_icon = document.querySelector('#day-6 #d6-icon');\nconst day_6_maxTemp = document.querySelector('#day-6 #d6-maxTemp');\nconst day_6_minTemp = document.querySelector('#day-6 #d6-minTemp');\n\n\n//# sourceURL=webpack://dailyWeather/./src/js/domElemCollection.js?");
+
+/***/ }),
+
+/***/ "./src/js/helperFunctions.js":
+/*!***********************************!*\
+  !*** ./src/js/helperFunctions.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"degToCompass\": () => /* binding */ degToCompass,\n/* harmony export */   \"timeConverter\": () => /* binding */ timeConverter\n/* harmony export */ });\n//convert degree in decimals to compass direction\nfunction degToCompass(angle) {\n  const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];\n  return directions[Math.round(angle / 45) % 8];\n}\n// convert unix time stamp to date\nfunction timeConverter(UNIX_timestamp) {\n  var dateVal = new Date(UNIX_timestamp * 1000);\n  var months = [\n    'Jan',\n    'Feb',\n    'Mar',\n    'Apr',\n    'May',\n    'Jun',\n    'Jul',\n    'Aug',\n    'Sep',\n    'Oct',\n    'Nov',\n    'Dec',\n  ];\n  var month = months[dateVal.getMonth()];\n  var date = dateVal.getDate();\n  var day = [\n    'Sunday',\n    'Monday',\n    'Tuesday',\n    'Wednesday',\n    'Thursday',\n    'Friday',\n    'Saturday',\n  ][dateVal.getDay()];\n  var time = { day: day, date: `${date} ${month}` };\n  return time;\n}\n\n\n//# sourceURL=webpack://dailyWeather/./src/js/helperFunctions.js?");
+
+/***/ }),
+
 /***/ "./src/js/main.js":
 /*!************************!*\
   !*** ./src/js/main.js ***!
@@ -113,7 +146,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n\n\n\n\n//# sourceURL=webpack://dailyWeather/./src/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ \"./src/scss/style.scss\");\n/* harmony import */ var _weatherAPI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weatherAPI */ \"./src/js/weatherAPI.js\");\n/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./controller */ \"./src/js/controller.js\");\n/* harmony import */ var _view_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./view.js */ \"./src/js/view.js\");\n/* harmony import */ var _domElemCollection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./domElemCollection */ \"./src/js/domElemCollection.js\");\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://dailyWeather/./src/js/main.js?");
+
+/***/ }),
+
+/***/ "./src/js/view.js":
+/*!************************!*\
+  !*** ./src/js/view.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"View\": () => /* binding */ View\n/* harmony export */ });\n/* harmony import */ var _domElemCollection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./domElemCollection */ \"./src/js/domElemCollection.js\");\n/* harmony import */ var _helperFunctions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helperFunctions */ \"./src/js/helperFunctions.js\");\n\n\n\nclass View {\n  static displayWeather(weatherDate) {\n    const date = _helperFunctions__WEBPACK_IMPORTED_MODULE_1__.timeConverter(weatherDate.current.dt);\n\n    _domElemCollection__WEBPACK_IMPORTED_MODULE_0__.todayTemp.textContent = weatherDate.current.temp\n      .toString()\n      .includes('.')\n      ? weatherDate.current.temp.split('.')[0] + '°'\n      : weatherDate.current.temp + '°';\n    _domElemCollection__WEBPACK_IMPORTED_MODULE_0__.todayCondition.textContent =\n      weatherDate.current.weather[0].description;\n    _domElemCollection__WEBPACK_IMPORTED_MODULE_0__.todayWindDirection.textContent = _helperFunctions__WEBPACK_IMPORTED_MODULE_1__.degToCompass(\n      weatherDate.current.wind_deg\n    );\n    _domElemCollection__WEBPACK_IMPORTED_MODULE_0__.todayWindSpeed.textContent =\n      weatherDate.current.wind_speed + ' km/h';\n\n    _domElemCollection__WEBPACK_IMPORTED_MODULE_0__.todayName.textContent = date.day;\n    _domElemCollection__WEBPACK_IMPORTED_MODULE_0__.todayDate.textContent = date.date;\n\n    // api daily arr contain 8 day,\n    // only need 7 so setting the max index to 7\n    for (let index = 1; index < 7; index++) {\n      const day = weatherDate.daily[index];\n      const date = _helperFunctions__WEBPACK_IMPORTED_MODULE_1__.timeConverter(day.dt);\n      _domElemCollection__WEBPACK_IMPORTED_MODULE_0__[`day_${index}_date`].textContent = date.day;\n\n      _domElemCollection__WEBPACK_IMPORTED_MODULE_0__[\n        `day_${index}_maxTemp`\n      ].textContent = day.temp.max.toString().includes('.')\n        ? day.temp.max.toString().split('.')[0] + '°C'\n        : day.temp.max + '°C';\n      _domElemCollection__WEBPACK_IMPORTED_MODULE_0__[\n        `day_${index}_minTemp`\n      ].textContent = day.temp.min.toString().includes('.')\n        ? day.temp.min.toString().split('.')[0] + '°'\n        : day.temp.min + '°';\n    }\n  }\n}\n\n\n//# sourceURL=webpack://dailyWeather/./src/js/view.js?");
+
+/***/ }),
+
+/***/ "./src/js/weatherAPI.js":
+/*!******************************!*\
+  !*** ./src/js/weatherAPI.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Weather\": () => /* binding */ Weather\n/* harmony export */ });\n// this should be hidden\nconst _WeatherAPIKey = '260900576590c23a8d0950d747779286';\n\nclass Weather {\n  static async getWeatherData({ latitude, longitude }) {\n    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,alerts&appid=${_WeatherAPIKey}&units=metric`;\n    const weatherRowData = await fetch(url);\n    const weatherParsedData = await weatherRowData.json();\n\n    return weatherParsedData;\n  }\n}\n\n\n//# sourceURL=webpack://dailyWeather/./src/js/weatherAPI.js?");
 
 /***/ })
 

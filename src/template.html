@@ -21,12 +21,13 @@
           </a>
 
           <div class="d-none d-md-block">
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0 needs-validation" novalidate>
               <input
                 class="form-control mr-sm-2"
                 type="text"
-                placeholder="Find your location"
+                placeholder="Weather in (city name)"
                 id="location"
+                required
               />
               <button
                 class="btn btn-outline-primary my-2 my-sm-0"
@@ -40,12 +41,13 @@
         </nav>
 
         <div class="sm-search d-md-none">
-          <form class="form-inline flex-nowrap">
+          <form class="form-inline flex-nowrap needs-validation" novalidate>
             <input
               class="form-control mr-2 mr-sm-3 flex-grow-1"
               type="text"
-              placeholder="Find your location"
-              id="location"
+              placeholder="Weather in (city name)"
+              id="locationInpt"
+              required
             />
             <button
               class="btn btn-outline-primary my-2 my-sm-0"
@@ -64,30 +66,28 @@
         <div class="mainSection px-2 px-md-0 my-5">
           <div class="row">
             <div class="col-md-12 col-lg-4 px-0">
-              <div class="card border-0 bg-transparent">
+              <div class="card border-0 bg-transparent" id="day-0">
                 <div
                   class="card-header rounded-0 d-flex justify-content-between bg-dark-1 text-light"
                 >
-                  <span id="day">Monday</span>
-                  <span id="date">20 oct</span>
+                  <span id="day"></span>
+                  <span id="date"></span>
                 </div>
-                <div class="card-body py-5 bg-secondary">
-                  <h2 class="text-light mb-3" id="city">New York</h2>
+                <div class="card-body py-4 bg-secondary">
+                  <h2 class="text-light mb-3" id="city"></h2>
                   <div class="d-flex align-items-center">
-                    <span class="display-1 text-white mr-4" id="temp">
-                      23°
-                    </span>
+                    <span class="display-1 text-white mr-4" id="temp"> </span>
                     <span
                       ><img
                         class="img-fluid"
-                        src="./img/icons/icon-1.svg"
+                        src="./img/icons/01.svg"
                         width="90"
                         height="60"
                         id="temp-icon"
                     /></span>
                   </div>
-                  <div class="curr-condition mt-n3 mb-4">
-                    <h4 class="mb-0" id="condition">mostly sunny</h4>
+                  <div class="curr-condition mt-n1 mb-4">
+                    <h5 class="mb-0" id="condition"></h5>
                   </div>
                   <div
                     class="windInfo d-flex justify-content-around justify-content-md-start justify-content-lg-around align-items-center"
@@ -98,14 +98,15 @@
                         width="21"
                         height="21"
                       /><span class="precip ml-2 text-muted" id="precep"
-                        >0%</span
+                        >---</span
                       ></span
                     >
                     <span class="mr-md-5 mr-lg-0">
                       <img src="./img/icon-wind.png" width="21" height="21" />
-                      <span class="wind-speed ml-1 text-muted" id="windSpeed"
-                        >18km/h</span
-                      >
+                      <span
+                        class="wind-speed ml-1 text-muted"
+                        id="windSpeed"
+                      ></span>
                     </span>
                     <span class="mr-md-5 mr-lg-0">
                       <img
@@ -116,19 +117,18 @@
                       <span
                         class="wind-direction ml-1 text-muted"
                         id="windDirection"
-                        >East</span
-                      >
+                      ></span>
                     </span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-6 col-md-2 col-lg px-0">
-              <div class="card border-0 bg-transparent h-100">
+              <div class="card border-0 bg-transparent h-100" id="day-1">
                 <div
                   class="card-header rounded-0 d-flex justify-content-center bg-dark-2 text-light"
                 >
-                  <span id="day">Tuesday</span>
+                  <span id="d1-day"></span>
                 </div>
                 <div
                   class="card-body d-flex flex-column justify-content-center align-items-center bg-dark-3 text-light"
@@ -138,24 +138,24 @@
                       src="./img/icons/icon-2.svg"
                       width="48"
                       height="35"
-                      alt=""
+                      id="d1-icon"
                     />
                   </div>
                   <div class="forecast-Maxtemp mb-2">
-                    <h4>23°C</h4>
+                    <h4 id="d1-maxTemp"></h4>
                   </div>
                   <div class="forecast-minTemp text-muted">
-                    <span>12°C</span>
+                    <span id="d1-minTemp"></span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-6 col-md-2 col-lg px-0">
-              <div class="card border-0 bg-transparent h-100">
+              <div class="card border-0 bg-transparent h-100" id="day-2">
                 <div
                   class="card-header rounded-0 d-flex justify-content-center bg-dark-1 text-light"
                 >
-                  <span id="day">Wednesday</span>
+                  <span id="d2-day"></span>
                 </div>
                 <div
                   class="card-body d-flex flex-column justify-content-center align-items-center bg-secondary text-light"
@@ -165,24 +165,24 @@
                       src="./img/icons/icon-2.svg"
                       width="48"
                       height="35"
-                      alt=""
+                      id="d2-icon"
                     />
                   </div>
                   <div class="forecast-Maxtemp mb-2">
-                    <h4>23°C</h4>
+                    <h4 id="d2-maxTemp"></h4>
                   </div>
                   <div class="forecast-minTemp text-muted">
-                    <span>12°C</span>
+                    <span id="d2-minTemp"></span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-6 col-md-2 col-lg px-0">
-              <div class="card border-0 bg-transparent h-100">
+              <div class="card border-0 bg-transparent h-100" id="day-3">
                 <div
                   class="card-header rounded-0 d-flex justify-content-center bg-dark-1 bg-md-dark-2 text-light"
                 >
-                  <span id="day">thursday</span>
+                  <span id="d3-day"></span>
                 </div>
                 <div
                   class="card-body d-flex flex-column justify-content-center align-items-center bg-secondary bg-md-dark-3 text-light"
@@ -192,24 +192,24 @@
                       src="./img/icons/icon-2.svg"
                       width="48"
                       height="35"
-                      alt=""
+                      id="d3-icon"
                     />
                   </div>
                   <div class="forecast-Maxtemp mb-2">
-                    <h4>23°C</h4>
+                    <h4 id="d3-maxTemp"></h4>
                   </div>
                   <div class="forecast-minTemp text-muted">
-                    <span>12°C</span>
+                    <span id="d3-minTemp"></span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-6 col-md-2 col-lg px-0">
-              <div class="card border-0 bg-transparent h-100">
+              <div class="card border-0 bg-transparent h-100" id="day-4">
                 <div
                   class="card-header rounded-0 d-flex justify-content-center bg-dark-2 bg-md-dark-1 text-light"
                 >
-                  <span id="day">Friday</span>
+                  <span id="d4-day"></span>
                 </div>
                 <div
                   class="card-body d-flex flex-column justify-content-center align-items-center bg-dark-3 bg-md-secondary text-light"
@@ -219,24 +219,24 @@
                       src="./img/icons/icon-2.svg"
                       width="48"
                       height="35"
-                      alt=""
+                      id="d4-icon"
                     />
                   </div>
                   <div class="forecast-Maxtemp mb-2">
-                    <h4>23°C</h4>
+                    <h4 id="d4-maxTemp"></h4>
                   </div>
                   <div class="forecast-minTemp text-muted">
-                    <span>12°C</span>
+                    <span id="d4-minTemp"></span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-6 col-md-2 col-lg px-0">
-              <div class="card border-0 bg-transparent h-100">
+              <div class="card border-0 bg-transparent h-100" id="day-5">
                 <div
                   class="card-header rounded-0 d-flex justify-content-center bg-dark-2 text-light"
                 >
-                  <span id="day">Saturday</span>
+                  <span id="d5-day"></span>
                 </div>
                 <div
                   class="card-body d-flex flex-column justify-content-center align-items-center bg-dark-3 text-light"
@@ -246,24 +246,24 @@
                       src="./img/icons/icon-2.svg"
                       width="48"
                       height="35"
-                      alt=""
+                      id="d5-icon"
                     />
                   </div>
                   <div class="forecast-Maxtemp mb-2">
-                    <h4>23°C</h4>
+                    <h4 id="d5-maxTemp"></h4>
                   </div>
                   <div class="forecast-minTemp text-muted">
-                    <span>12°C</span>
+                    <span id="d5-minTemp"></span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-6 col-md-2 col-lg px-0">
-              <div class="card border-0 bg-transparent h-100">
+              <div class="card border-0 bg-transparent h-100" id="day-6">
                 <div
                   class="card-header rounded-0 d-flex justify-content-center bg-dark-1 text-light"
                 >
-                  <span id="day">Sunday</span>
+                  <span id="d6-day"></span>
                 </div>
                 <div
                   class="card-body d-flex flex-column justify-content-center align-items-center bg-secondary text-light"
@@ -273,14 +273,14 @@
                       src="./img/icons/icon-2.svg"
                       width="48"
                       height="35"
-                      alt=""
+                      id="d6-icon"
                     />
                   </div>
                   <div class="forecast-Maxtemp mb-2">
-                    <h4>23°C</h4>
+                    <h4 id="d6-maxTemp"></h4>
                   </div>
                   <div class="forecast-minTemp text-muted">
-                    <span>12°C</span>
+                    <span id="d6-minTemp"></span>
                   </div>
                 </div>
               </div>
