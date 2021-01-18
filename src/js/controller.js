@@ -5,6 +5,7 @@ import { GoeLocation } from './geoLocationAPI';
 import * as helperFunctions from './helperFunctions';
 
 const weatherController = {
+  storedWeatherData: null,
   getLocationAndWeather: function (queryString) {
     GoeLocation.getLatLonFromCityName(queryString)
       .then((geoLocation) => {
@@ -15,13 +16,14 @@ const weatherController = {
             latitude: geoLocation.latt,
             longitude: geoLocation.longt,
           }).then((weatherData) => {
-            console.log(weatherData);
+            // store weatherData to use when toggling between temp units
+            weatherController.storedWeatherData = weatherData;
+
             View.displayWeather(weatherData);
-            View.updateCityName(queryString);
+            View.updateCityName(`${queryString}, ${geoLocation.standard.prov}`);
           });
         } else {
           // if no city was found
-          console.log(geoLocation);
           const errorMessage = geoLocation.error.hasOwnProperty('description')
             ? geoLocation.error.description
             : geoLocation.error.hasOwnProperty('message')
@@ -51,10 +53,12 @@ const weatherController = {
         ])
           .then(([weatherData, geoLocationData]) => {
             if (!geoLocationData.error) {
+              // store weatherData to use when toggling between temp units
+              weatherController.storedWeatherData = weatherData;
+
               View.displayWeather(weatherData);
               View.updateCityName(geoLocationData);
             } else {
-              console.log(geoLocationData);
               const errorMessage = geoLocationData.error.hasOwnProperty(
                 'description'
               )
@@ -67,7 +71,6 @@ const weatherController = {
             }
           })
           .catch((err) => {
-            console.log(err);
             swal('', `${err}`, 'error');
           });
       };
@@ -87,6 +90,14 @@ const weatherController = {
         positionAccessGranted,
         positionAccessDenied
       );
+
+      // select the current temp
+      if (localStorage.getItem('temperatureUnit')) {
+        if (localStorage.getItem('temperatureUnit') == 'F') {
+          domElemCollection.fahrenheitBtn.classList.add('active');
+          domElemCollection.celsiusBtn.classList.remove('active');
+        }
+      }
     },
 
     onFormSubmit: function (event) {
@@ -133,6 +144,24 @@ const weatherController = {
         }
       }
     },
+
+    switchTemp: function (event) {
+      event.stopPropagation();
+
+      if (event.target.closest('#celsius')) {
+        localStorage.setItem('temperatureUnit', 'C');
+
+        weatherController.storedWeatherData
+          ? View.displayWeather(weatherController.storedWeatherData)
+          : undefined;
+      } else if (event.target.closest('#fahrenheit')) {
+        localStorage.setItem('temperatureUnit', 'F');
+
+        weatherController.storedWeatherData
+          ? View.displayWeather(weatherController.storedWeatherData)
+          : undefined;
+      }
+    },
   },
 };
 
@@ -144,3 +173,6 @@ window.addEventListener('load', weatherController.domListeners.onLoadListener);
 domElemCollection.locationForm.forEach((form) => {
   form.addEventListener('submit', weatherController.domListeners.onFormSubmit);
 });
+
+// toggle displaying the data in Fahrenheit or Celsius.
+document.addEventListener('click', weatherController.domListeners.switchTemp);

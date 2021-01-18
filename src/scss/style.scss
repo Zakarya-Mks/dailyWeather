@@ -72,16 +72,23 @@ html {
   }
 }
 
-.humidityIconColor {
-  filter: invert(60%) sepia(5%) saturate(244%) hue-rotate(192deg)
-    brightness(94%) contrast(85%);
+.btn-group .btn {
+  box-shadow: none !important;
 }
 
 #findBtn {
-  // set it to min width to keep width when showing smaller loading icon
+  // set it to min width to keep width
+  //when showing smaller loading icon
   min-width: 57.13px;
 }
-
+// the loading animation while the page loads
+//for the first time
+#displayWhileLoadingPage {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translateY(-50%), translateY(-50%);
+}
 .scale-in-center {
   animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
