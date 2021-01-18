@@ -149,15 +149,17 @@ const weatherController = {
     },
 
     switchTemp: function (event) {
-      event.stopPropagation();
-
       if (event.target.closest('#celsius')) {
+        event.stopPropagation();
+
         localStorage.setItem('temperatureUnit', 'C');
 
         weatherController.storedWeatherData
           ? View.displayWeather(weatherController.storedWeatherData)
           : undefined;
       } else if (event.target.closest('#fahrenheit')) {
+        event.stopPropagation();
+
         localStorage.setItem('temperatureUnit', 'F');
 
         weatherController.storedWeatherData
