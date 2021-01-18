@@ -46,6 +46,11 @@ const weatherController = {
   },
   domListeners: {
     onLoadListener: function () {
+      // mitigate the short un-styled content
+      // that flashes when the page load for the first time
+      // before the js inject the styling into the header
+      document.querySelector('body').style.display = 'block';
+
       const positionAccessGranted = function (location) {
         Promise.all([
           Weather.getWeatherData(location.coords),
