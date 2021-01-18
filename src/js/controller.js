@@ -76,7 +76,10 @@ const weatherController = {
       };
 
       const positionAccessDenied = function () {
-        const newYorkCoordinates = { alt: 40.712772, lon: -74.006058 };
+        const newYorkCoordinates = {
+          latitude: 40.712772,
+          longitude: -74.006058,
+        };
         Weather.getWeatherData(newYorkCoordinates).then((weatherData) => {
           View.displayWeather(weatherData);
           View.updateCityName('New York');
