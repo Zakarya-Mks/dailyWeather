@@ -81,6 +81,9 @@ const weatherController = {
           longitude: -74.006058,
         };
         Weather.getWeatherData(newYorkCoordinates).then((weatherData) => {
+          // store weatherData to use when toggling between temp units
+          weatherController.storedWeatherData = weatherData;
+
           View.displayWeather(weatherData);
           View.updateCityName('New York');
         });
@@ -150,16 +153,12 @@ const weatherController = {
 
     switchTemp: function (event) {
       if (event.target.closest('#celsius')) {
-        event.stopPropagation();
-
         localStorage.setItem('temperatureUnit', 'C');
 
         weatherController.storedWeatherData
           ? View.displayWeather(weatherController.storedWeatherData)
           : undefined;
       } else if (event.target.closest('#fahrenheit')) {
-        event.stopPropagation();
-
         localStorage.setItem('temperatureUnit', 'F');
 
         weatherController.storedWeatherData
@@ -180,4 +179,7 @@ domElemCollection.locationForm.forEach((form) => {
 });
 
 // toggle displaying the data in Fahrenheit or Celsius.
-document.addEventListener('click', weatherController.domListeners.switchTemp);
+domElemCollection.todayCard.addEventListener(
+  'click',
+  weatherController.domListeners.switchTemp
+);

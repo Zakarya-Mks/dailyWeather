@@ -9,6 +9,7 @@ export const celsiusBtn = document.querySelector('#celsius');
 export const fahrenheitBtn = document.querySelector('#fahrenheit');
 
 export const todayTemp = document.querySelector('#temp');
+export const todayCard = document.querySelector('#day-0');
 export const todayCondition = document.querySelector('#day-0 #condition');
 export const todayConditionIcon = document.querySelector('#day-0 #temp-icon');
 export const todayHumidity = document.querySelector('#day-0 #humidity');
